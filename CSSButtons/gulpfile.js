@@ -9,14 +9,19 @@ var minifycss= require('gulp-minify-css');
 var autoprefixer = require('gulp-autoprefixer');
 var rename = require('gulp-rename');
 
+var jshint = require('gulp-jshint');
+var uglify = require('gulp-uglify');
+
 
 var paths = {
     less: ['./public/stylesheets/src/**/*.less'],
-    html: ['./views/**/*.html']
+    html: ['./views/**/*.html'],
+    js: ['./public/javascripts/src/**/*.js']
 };
 
 var watcherLess;
 var watcherHtml;
+var watcherJs;
 
 gulp.task('html', function() {
     var stream = gulp.src(paths.html)
@@ -43,8 +48,20 @@ gulp.task('styles', function() {
     return stream;
 });
 
+gulp.task('js', function() {
+    var stream = gulp.src(paths.js)
+        .pipe(plumber())
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./public/javascripts/dest'))
+        .pipe(livereload());
 
-gulp.task('default', ['html', 'styles'], function() {
+    return stream;
+});
+
+
+gulp.task('default', ['html', 'styles', 'js'], function() {
     livereload.listen();
 
     watcherLess = gulp.watch(paths.less, ['styles']);
@@ -55,5 +72,10 @@ gulp.task('default', ['html', 'styles'], function() {
     watcherHtml = gulp.watch(paths.html, ['html']);
     watcherHtml.on('change', function(event) {
         console.log('File ' + event.path + ' was ' +  event.type + ', running task...');
+    });
+
+    watcherJs = gulp.watch(paths.js, ['js']);
+    watcherJs.on('change', function(event) {
+        console.log('File ' + event.path + ' was ' + event.type + ', running task...');
     });
 });

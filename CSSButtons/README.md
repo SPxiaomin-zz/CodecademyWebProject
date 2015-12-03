@@ -13,10 +13,20 @@
     
     - 解决 div 标签的水平居中问题，和其中内容的水平和垂直居中问题
 
-- 改写 views/index.html 文件，创建 views/header.html views/footer.html views/index.html views/submit.html views/right.html views/fault.html 文件
+- 突然灵机一动，使用首页创建导航栏，链接到各个按钮页面，改写 views/index.html 文件，创建 views/header.html views/footer.html views/submit.html views/right.html views/fault.html 文件
 
     - 使用 `<% include header.html %>` 和 `<% include footer.html>` 实现代码的复用
     - 使用 views/index.html 文件链接到 views/submit.html views/right.html views/fault.html
+
+- 灵机又一动，使用首页创建导航，并使用 DOM 操作技术动态修改内容，结合 css3 动画实现酷炫的效果
+    
+    - 安装 gulp 插件 gulp-jshint gulp-uglify 并改写 gulpfile.js 文件
+    - 编写首页导航
+
+        - 使用 DOM `this.style.width = this.offsetWidth [+-] 10 + "px";` 和 setInterval clearInterval 产生动画效果
+        
+    - 编写 home 页面
+    
     
 
 
@@ -49,3 +59,8 @@
     
         - 水平居中: 在 div 设置 `text-align: center`
         - 垂直居中: 设置 div 的 `height` 和 `line-height` 相等
+        
+- 导航条制作
+
+    - 学习资料 <http://www.cnblogs.com/jilleanwong/archive/2008/09/22/1295783.html>
+    
