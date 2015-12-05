@@ -1,3 +1,4 @@
+/* jshint browser:true,devel:true */
 function addLoadEvent(newFunc) {
     var func = window.onload;
 
@@ -67,7 +68,10 @@ function displayNone(buttons, exceptElement) {
 function loadButton(anchors) {
     var welcome = document.getElementById("welcome");
     var orange = document.getElementById("orange");
-    var buttons = [welcome, orange];
+    var green = document.getElementById("green");
+    var red = document.getElementById("red");
+
+    var buttons = [welcome, orange, green, red];
 
     for ( var i=0; i<anchors.length; i++ ) {
         anchors[i].onclick = function(event) {
@@ -83,6 +87,14 @@ function loadButton(anchors) {
                 case "submit":
                     displayNone(buttons, orange);
                     orange.style.display = "inline-block";
+                    break;
+                case "right":
+                    displayNone(buttons, green);
+                    green.style.display = "inline-block";
+                    break;
+                case "fault":
+                    displayNone(buttons, red);
+                    red.style.display = "inline-block";
                     break;
             }
         };

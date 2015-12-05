@@ -23,9 +23,10 @@
     - 安装 gulp 插件 gulp-jshint gulp-uglify 并改写 gulpfile.js 文件
     - 编写首页导航
 
-        - 使用 DOM `this.style.width = this.offsetWidth [+-] 10 + "px";` 和 setInterval clearInterval 产生动画效果
+        - 使用 DOM `this.style.width = this.offsetWidth [+-] 10 + "px";` 和 `setInterval` `clearInterval` 根据 onmouseover onmouseout 产生动画效果
         
     - 编写 home 页面
+    - 出现大量代码重复，深入学习 `LESS` ，并对代码进行重构
     
     
 

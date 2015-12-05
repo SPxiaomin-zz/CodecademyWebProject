@@ -54,6 +54,9 @@ gulp.task('js', function() {
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
         .pipe(uglify())
+        .pipe(rename({
+            extname: ".min.js"
+        }))
         .pipe(gulp.dest('./public/javascripts/dest'))
         .pipe(livereload());
 
