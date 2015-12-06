@@ -16,8 +16,67 @@
     }
 }
 
+.buttonStyle(@width, @borderRadius) {
+    /* color */
+    .fontAndBackColor;
+
+    /* typography */
+    font-size: 1em;
+    font-weight: bold;
+
+    /* layout */
+    width: @width;
+    height: 100px;
+    line-height: 100px;
+    border-radius: @borderRadius;
+    margin-top: 100px;
+
+    display: none;
+    text-align: center;
+
+    .buttonHoverAnimation;
+}
+
 .animation-definition(@animationName) {
     animation: @animationName 2s;
+}
+
+.animation-keyframes-bounceInVertical(@zeroPercent, @sixtyPercent, @eightyPercent, @oneHundredPercent) {
+    0% {
+        opacity: 0;
+        transform: translateY(@zeroPercent);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(@sixtyPercent);
+    }
+    80% {
+        opacity: 1;
+        transform: translateY(@eightyPercent);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(@oneHundredPercent);
+    }
+}
+
+.animation-keyframes-bounceInHorizontal(@zeroPercent, @sixtyPercent, @eightyPercent, @oneHundredPercent) {
+    0% {
+        opacity: 0;
+        transform: translateX(@zeroPercent);
+    }
+    60% {
+        opacity: 1;
+        transform: translateX(@sixtyPercent);
+    }
+    80% {
+        opacity: 1;
+        transform: translateX(@eightyPercent);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(@oneHundredPercent);
+    }
 }
 
 /*
@@ -37,8 +96,8 @@
 
 body {
     /* layout */
-    //background: url(/images/back3.jpg) no-repeat fixed center top;
-    //background-size: cover;
+    background: url(/images/back3.jpg) no-repeat fixed center top;
+    background-size: cover;
 
     #indexMenu {
         /* layout */
@@ -109,72 +168,15 @@ body {
         }
 
         #orange {
-            /* typography */
-            font-size: 1em;
-            font-weight: bold;
-
-            /* layout */
-            width: 200px;
-            height: 100px;
-            line-height: 100px;
-            border-radius: 10px;
-            margin-top: 100px;
-
-            display: none;
-            text-align: center;
-
-            .buttonHoverAnimation;
-
-            a {
-                /* color */
-                .fontAndBackColor;
-
-                /* layout */
-                display: block;
-                text-decoration: none;
-            }
+            .buttonStyle(200px, 10px);
         }
 
         #green {
-            /* color */
-            .fontAndBackColor;
-
-            /* typography */
-            font-size: 1em;
-            font-weight: bold;
-
-            /* layout */
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            border-radius: 100%;
-            margin-top: 100px;
-
-            display: none; 
-            text-align: center;
-
-            .buttonHoverAnimation;
+            .buttonStyle(100px, 100%);
         }
 
         #red {
-            /* color */
-            .fontAndBackColor;
-
-            /* typography */
-            font-size: 2em;
-            font-weight: bold;
-
-            /* layout */
-            width: 100px;
-            height: 100px;
-            line-height: 100px;
-            margin-top: 100px;
-            border-radius: 2px;
-
-            display: none;
-            text-align: center;
-            
-            .buttonHoverAnimation;
+            .buttonStyle(100px, 2px);
         }
     }
 }
@@ -192,58 +194,13 @@ body {
 }
 
 @keyframes bounceInDown {
-    0% {
-        opacity: 0;
-        transform: translateY(-2000px);
-    }
-    60% {
-        opacity: 1;
-        transform: translateY(30px);
-    }
-    80% {
-        opacity: 1;
-        transform: translateY(-10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
+    .animation-keyframes-bounceInVertical(-2000px, 30px, -10px , 0);
 }
 
 @keyframes bounceInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(2000px);
-    }
-    60% {
-        opacity: 1;
-        transform: translateY(-30px);
-    }
-    80% {
-        opacity: 1;
-        transform: translateY(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0px);
-    }
+    .animation-keyframes-bounceInVertical(2000px, -30px, 10px, 0);
 }
 
 @keyframes bounceInRight {
-    0% {
-        opacity: 0;
-        transform: translateX(2000px);
-    }
-    60% {
-        opacity: 1;
-        transform: translateX(-30px);
-    }
-    80% {
-        opacity: 1;
-        transform: translateX(10px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0px);
-    }
+    .animation-keyframes-bounceInHorizontal(2000px, -30px, 10px, 0);
 }

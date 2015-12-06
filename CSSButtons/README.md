@@ -25,12 +25,11 @@
 
         - 使用 DOM `this.style.width = this.offsetWidth [+-] 10 + "px";` 和 `setInterval` `clearInterval` 根据 onmouseover onmouseout 产生动画效果
         
-    - 编写 home 页面
+    - 编写 home 页面，通过点击目录的不同链接，使用 dom 操作 `display` 属性并结合 css3 的动画实现不同内容的展现
     - 出现大量代码重复，深入学习 `LESS` ，并对代码进行重构
+    - 偶然发现导航的动画可以通过 `transition` 和 `:hover` 达到同样的效果，不过还是不改代码了，因为写目录动画时的 js 代码可以复习相当重要的 js 知识点
+    - 改写 `setInterval clearInterval` 为 `setTimeout clearTimeout` ， 原因是如果使用 `setInteravl` 的话，后一个间歇调用可能会在前一个间歇调用结束之前被调用，`更加推荐使用 setTimeout`
     
-    
-
-
 ## 学习总结
 
 - express 插件 morgan 学习总结
@@ -63,5 +62,52 @@
         
 - 导航条制作
 
-    - 学习资料 <http://www.cnblogs.com/jilleanwong/archive/2008/09/22/1295783.html>
+    - offsetWidth 
+        
+        - 学习资料:<http://www.cnblogs.com/jilleanwong/archive/2008/09/22/1295783.html>
+        - 定义: 指的是当前元素的宽度， `width + padding + border + margin`
+        - 返回值类型: `number`
     
+    - JavaScript 停止冒泡 和 阻止浏览器默认行为 
+    
+        - 学习资料: <http://caibaojian.com/javascript-stoppropagation-preventdefault.html>
+        - 首先是取得事件（两种方式）:
+        
+            1. event（传入函数的参数，临时存在的）
+            2. window.event（for IE）
+            
+            由上可知取得事件的代码如下:
+            
+                var e = event || window.event;
+            
+        - 取得事件的对象:
+        
+            1. event.target
+            2. window.event.srcElement（for IE）
+            
+        - 停止冒泡
+        
+            - 取消方式
+            
+                1. event.stopPropagation()
+                2. window.event.cancelBubble = true; （for IE）
+        
+            - 代码
+            
+                    window.event ? (window.event.cancelBubble = true) : event.stopPropagation();
+                
+        - 阻止浏览器默认行为
+        
+            - 阻止方式
+            
+                1. event.preventDefault(); 或者 window.event.returnValue = false;
+                2. 在函数中 `return false`
+            
+            - 代码
+            
+                    event ? event.preventDefault() : (window.event.returnValue = false);
+                
+    - setTimeout setInterval 调用的代码是在 `全局环境` 下执行的，因此函数中的 `this` 的值在非严格模式下指向的是 `window` 对象，在严格模式下是　`undefined`　。    
+
+## 结束语
+

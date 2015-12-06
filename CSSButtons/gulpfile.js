@@ -34,9 +34,7 @@ gulp.task('styles', function() {
     var stream = gulp.src(paths.less)
         .pipe(plumber())
         .pipe(less())
-        .pipe(autoprefixer({
-            browsers: ['> 5% in CN', 'last 2 versions']
-        }))
+        .pipe(autoprefixer())
         .pipe(gulp.dest('./public/stylesheets/dest'))
         .pipe(minifycss())
         .pipe(rename({

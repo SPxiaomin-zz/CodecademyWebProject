@@ -1,4 +1,5 @@
 /* jshint browser:true,devel:true */
+
 function addLoadEvent(newFunc) {
     var func = window.onload;
 
@@ -13,6 +14,7 @@ function addLoadEvent(newFunc) {
 }
 
 
+/*
 function onmouseoverAnimation(anchors) {
     for ( var i=0; i<anchors.length; i++ ) {
         anchors[i].onmouseover = function() {
@@ -20,7 +22,7 @@ function onmouseoverAnimation(anchors) {
             var This = this;  //避免闭包中的 this 指针访问问题，我被坑了...
             clearInterval(This.time); //在 onmouseout 动画结束之前就 onmouseover 必须清除掉之前的 动画
 
-            This.time = setInterval(function() {
+            This.time = setInterval(function() {  //间歇调用的代码是在全局作用域中执行的，函数中的 this 的值在非严格模式下指向 window 对象，在严格模式下是 undefined
                 This.style.width = This.offsetWidth + 10 + "px"; //typeof This.offsetWidth === 'number'
                 if ( flag ) {
                     This.style.textAlign = "center"; //实现字体居中并随长度增长而移动的效果
@@ -55,6 +57,55 @@ function onmouseoutAnimation(anchors) {
         };
     }
 }
+*/
+
+
+function onmouseoverAnimation(anchors) {
+    for ( var i=0; i<anchors.length; i++ ) {
+        anchors[i].onmouseover = function() {
+            var flag = 1;
+            var This = this; //解决闭包问题
+            clearTimeout(This.timeoutId);
+
+            var changeWidth = function() {
+                This.style.width = This.offsetWidth + 10 + "px";
+
+                if ( flag ) {
+                    This.style.textAlign = "center";
+
+                    flag = 0;
+                }
+
+                if ( This.offsetWidth < 200 ) {
+                    This.timeoutId = setTimeout(changeWidth, 55);
+                }
+            };
+
+            This.timeoutId = setTimeout(changeWidth, 55);
+        };
+    }
+}
+
+function onmouseoutAnimation(anchors) {
+    for ( var i=0; i<anchors.length; i++ ) {
+        anchors[i].onmouseout = function() {
+            var This = this; //解决闭包问题
+            clearTimeout(This.timeoutId);
+            
+            var changeWidth = function() {
+                This.style.width = This.offsetWidth - 10 + "px";
+
+                if ( This.offsetWidth > 150 ) {
+                    This.timoutId = setTimeout(changeWidth, 55);
+                } else {
+                    This.style.textAlign = "";
+                }
+            };
+
+            This.timeoutId = setTimeout(changeWidth, 55);
+        };
+    }
+}
 
 
 function displayNone(buttons, exceptElement) {
@@ -75,7 +126,11 @@ function loadButton(anchors) {
 
     for ( var i=0; i<anchors.length; i++ ) {
         anchors[i].onclick = function(event) {
-            event.preventDefault();
+            if ( event && event.preventDefault ) { //阻止浏览器默认行为
+                event.preventDefault();
+            } else {
+                window.event.returnValue = false;
+            }
 
             var idAttribute = this.getAttribute("id");
 
@@ -113,3 +168,5 @@ function menuAnimation() {
 }
 
 addLoadEvent(menuAnimation);
+
+

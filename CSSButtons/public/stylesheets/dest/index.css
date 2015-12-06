@@ -7,11 +7,13 @@
   background-color: rgba(255, 192, 203, 0.5);
 }
 .buttonHoverAnimation {
+  -webkit-transition: all .2s;
   transition: all .2s;
 }
 .buttonHoverAnimation:hover {
   box-shadow: 0 0 15px 1px #FFF;
   -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
           transform: translateY(-10px);
 }
 /*
@@ -28,6 +30,8 @@
 }
 body {
   /* layout */
+  background: url(/images/back3.jpg) no-repeat fixed center top;
+  background-size: cover;
 }
 body #indexMenu {
   /* layout */
@@ -83,14 +87,19 @@ body #indexButton #welcome {
   margin-top: 100px;
   border-radius: 5px;
   display: inline-block;
+  -webkit-transition: all .2s;
   transition: all .2s;
 }
 body #indexButton #welcome:hover {
   box-shadow: 0 0 15px 1px #FFF;
   -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
           transform: translateY(-10px);
 }
 body #indexButton #orange {
+  /* color */
+  color: #FFF;
+  background-color: rgba(255, 192, 203, 0.5);
   /* typography */
   font-size: 1em;
   font-weight: bold;
@@ -102,20 +111,14 @@ body #indexButton #orange {
   margin-top: 100px;
   display: none;
   text-align: center;
+  -webkit-transition: all .2s;
   transition: all .2s;
 }
 body #indexButton #orange:hover {
   box-shadow: 0 0 15px 1px #FFF;
   -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
           transform: translateY(-10px);
-}
-body #indexButton #orange a {
-  /* color */
-  color: #FFF;
-  background-color: rgba(255, 192, 203, 0.5);
-  /* layout */
-  display: block;
-  text-decoration: none;
 }
 body #indexButton #green {
   /* color */
@@ -132,11 +135,13 @@ body #indexButton #green {
   margin-top: 100px;
   display: none;
   text-align: center;
+  -webkit-transition: all .2s;
   transition: all .2s;
 }
 body #indexButton #green:hover {
   box-shadow: 0 0 15px 1px #FFF;
   -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
           transform: translateY(-10px);
 }
 body #indexButton #red {
@@ -144,21 +149,23 @@ body #indexButton #red {
   color: #FFF;
   background-color: rgba(255, 192, 203, 0.5);
   /* typography */
-  font-size: 2em;
+  font-size: 1em;
   font-weight: bold;
   /* layout */
   width: 100px;
   height: 100px;
   line-height: 100px;
-  margin-top: 100px;
   border-radius: 2px;
+  margin-top: 100px;
   display: none;
   text-align: center;
+  -webkit-transition: all .2s;
   transition: all .2s;
 }
 body #indexButton #red:hover {
   box-shadow: 0 0 15px 1px #FFF;
   -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
           transform: translateY(-10px);
 }
 .animated-down {
@@ -191,8 +198,8 @@ body #indexButton #red:hover {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @keyframes bounceInDown {
@@ -213,8 +220,8 @@ body #indexButton #red:hover {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @-webkit-keyframes bounceInUp {
@@ -235,8 +242,8 @@ body #indexButton #red:hover {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @keyframes bounceInUp {
@@ -257,8 +264,8 @@ body #indexButton #red:hover {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
   }
 }
 @-webkit-keyframes bounceInRight {
@@ -279,8 +286,8 @@ body #indexButton #red:hover {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 @keyframes bounceInRight {
@@ -301,7 +308,7 @@ body #indexButton #red:hover {
   }
   100% {
     opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
