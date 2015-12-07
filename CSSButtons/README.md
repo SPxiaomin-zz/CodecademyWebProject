@@ -1,5 +1,9 @@
 # Project1 CSS Buttons
 
+## 效果图
+
+<img src="./public/images/effect.png" alt="效果图" />
+
 ## 项目操作步骤
 
 - 安装 express 模块: express morgan ejs
