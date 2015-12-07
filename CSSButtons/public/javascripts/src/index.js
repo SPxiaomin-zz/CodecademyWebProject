@@ -78,6 +78,8 @@ function onmouseoverAnimation(anchors) {
 
                 if ( This.offsetWidth < 200 ) {
                     This.timeoutId = setTimeout(changeWidth, 55);
+                } else {
+                    This.style.width = "200px";
                 }
             };
 
@@ -98,11 +100,14 @@ function onmouseoutAnimation(anchors) {
                 if ( This.offsetWidth > 150 ) {
                     This.timoutId = setTimeout(changeWidth, 55);
                 } else {
+                    This.style.width = "150px";
                     This.style.textAlign = "";
                 }
             };
 
-            This.timeoutId = setTimeout(changeWidth, 55);
+            if ( This.offsetWidth > 150 ) {
+                This.timeoutId = setTimeout(changeWidth, 55);
+            }
         };
     }
 }

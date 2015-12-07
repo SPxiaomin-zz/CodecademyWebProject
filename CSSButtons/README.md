@@ -111,3 +111,5 @@
 
 ## 结束语
 
+- 项目的学习地址: <https://www.codecademy.com/courses/web-beginner-en-XVV0A/0/1?curriculum_id=50b91eda28c2fb212300039e>
+- 通过 codecademy 的东西激发了自己的想法，结合自己最近学习的 ECMAScript 和 DOM 对其进行了完善，真真正正的感受到了每天进步一点点积累起来的强大力量，连我自己都有点感到惊人，加油！！！
